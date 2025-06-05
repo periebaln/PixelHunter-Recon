@@ -18,7 +18,7 @@ PixelHunter Recon, yüklenen fotoğrafların EXIF verilerini analiz ederek varsa
 - Google Maps API / OpenStreetMap
 - Reverse image search API (araştırma aşamasında)
 
- Roadmap
+ ## Roadmap
 1. EXIF Verisi Analizi
 
     Fotoğraftan EXIF metadata’sını çıkarma
