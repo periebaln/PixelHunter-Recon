@@ -1,7 +1,7 @@
-##PROMPT (Grok 3)
+#PROMPT (Grok 3)
 yüklenen fotoğrafların EXIF verilerini analiz ederek varsa GPS konumlarını haritada gösteren ve ters görsel arama yaparak benzer fotoğrafları bulan bir OSINT aracı oluşturmak için tüm yolları listele
 
-##RESULTS
+#RESULTS
 ### Ana Yollar
 - **EXIF Verilerini Çıkarma**: Fotoğrafların EXIF verilerini analiz etmek için Python'da `exifread`, `Pillow` veya `GPSPhoto` kütüphaneleri kullanılabilir. Bu kütüphaneler, GPS koordinatlarını çıkarmak için etkili yöntemler sunar.
 - **Harita Görselleştirme**: GPS koordinatlarını harita üzerinde göstermek için `Folium` kütüphanesi önerilir; interaktif haritalar oluşturur ve kullanımı kolaydır.
