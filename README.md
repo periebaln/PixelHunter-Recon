@@ -1,68 +1,52 @@
-# PixelHunter Recon
+# 🕵️‍♂️ Görüntülerin Sır Perdesini Aralıyoruz: Dijital Dedektiflik Zamanı\! 🖼️🌍
 
-## Takım Üyeleri
-- Begüm Akyüz 24**05
+[](https://www.google.com/search?q=https://github.com/kullanici_adi/proje_reposu)
 
-## Proje Açıklaması
-PixelHunter Recon, yüklenen fotoğrafların EXIF verilerini analiz ederek varsa GPS konumlarını haritada gösteren ve ters görsel arama yaparak benzer fotoğrafları bulan bir OSINT aracıdır.
+**Hazır olun\!** Çünkü bu proje, dijital görüntülerin derinliklerine inerek meta verilerden coğrafi konumlara, manipülasyon izlerinden yüz tanımaya kadar pek çok sırrı açığa çıkarmanızı sağlayacak güçlü bir araç kutusu sunuyor. Tek bir araca değil, en son yapay zeka teknolojilerini ve klasik yöntemleri bir araya getiren **hibrit ve akıllı bir yaklaşımla** dijital dedektifliğin yeni çağına adım atıyoruz\!
 
-## Hedefler
-- Fotoğrafların EXIF bilgilerini çıkarmak.
-- GPS bilgisi varsa harita üzerinde konum göstermek.
-- Ters görsel arama ile fotoğrafın diğer versiyonlarını bulmak.
+## ✨ Neden Bu Proje Bu Kadar İlgi Çekici?
 
-## Projede Kullanılan Temel Teknoloji ve Araçlar
+Sıkıcı tek bir araçla yetinmek yerine, bu proje size her türlü dijital görüntü analiz senaryosuna uygun, özenle seçilmiş ve entegre edilmiş bir **süper güçler seti** sunuyor:
 
-   `` EXIF Veri Çıkarma ve Analizi:
-        ExifTool: Görüntülerdeki kamera ayarları, çekim tarihi/saati ve GPS koordinatları gibi detaylı meta verileri çıkarmak ve düzenlemek için kullanılan komut satırı tabanlı güçlü bir araç.
-        Pillow (Python Kütüphanesi): Genel görüntü işleme ve EXIF verilerine erişim için kullanılan bir Python kütüphanesi.
-        exifread (Python Kütüphanesi): Özellikle GPS verilerini daha kolay bir şekilde çıkarmak ve ondalık dereceye dönüştürmek için tasarlanmış hafif bir Python kütüphanesi.
-        Çevrimiçi EXIF Görüntüleyiciler (ExifEditor.io, FotoForensics): Hızlı kontrol ve manipülasyon tespiti için kullanılan web tabanlı araçlar.
+  * **Görüntülerin Röntgeni:** EXIF verilerini saniyeler içinde çıkarıp analiz ederek kameranın ayarlarından çekim zamanına, hatta GPS koordinatlarına kadar her detayı görün\! (İstanbul'un tarihi bir mekanında çekilmiş bir fotoğrafın EXIF verilerini gösteren bir görsel buraya eklenebilir.)
+  * **Tersine Mühendislik Dedektifi:** Elinizdeki bir fotoğrafın kaynağını, internetteki diğer kopyalarını ve hatta manipüle edilip edilmediğini yapay zeka destekli araçlarla anında bulun\! (İstanbul Boğazı'nın farklı açılardan çekilmiş birkaç fotoğrafının ters görsel arama sonuçlarını gösteren bir kolaj buraya eklenebilir.)
+  * **Konum Avcısı:** Fotoğraflardaki gizli coğrafi ipuçlarını yapay zeka sayesinde ortaya çıkarın\! GPS verisi olmasa bile, bir görüntünün nerede çekildiğini tahmin etmek artık mümkün\! (İstanbul'un farklı semtlerinden (örneğin Sultanahmet, Karaköy, Kadıköy) çekilmiş ve konumlarını tahmin eden yapay zeka analizini gösteren görseller buraya eklenebilir.)
+  * **Yüz Tanıma Sihirbazı:** Belirli kişilerin internetteki izlerini yüz tanıma teknolojisiyle sürün\! (İstanbul'da kalabalık bir caddede çekilmiş bir fotoğraftan bir yüzü tanıma analizini gösteren bir örnek görsel buraya eklenebilir - etik kurallara dikkat ederek temsili bir görsel kullanılmalı.)
+  * **Etik ve Güvenilir Analiz:** Dijital dedektiflik yaparken etik kurallara ve yasalara saygılı olmayı unutmuyoruz. Bu proje, sorumlu araç seçimini ve veri gizliliğini ön planda tutar.
 
- ``   Ters Görüntü Arama:
-        Genel Arama Motorları (Google Görseller, TinEye, Yandex Görseller, Bing Görsel Arama): Görüntünün kökenini, kopyalarını ve benzer içerikleri bulmak için kullanılan yaygın web tabanlı arama motorları.
-        PimEyes: Gelişmiş yüz tanıma teknolojisiyle internette belirli bir kişinin yüzünü bulmaya odaklanmış uzmanlaşmış bir araç.
-        GeoSpy: Özellikle GPS verisi olmayan fotoğraflardan görüntü desenleri ve çevresel ipuçları sayesinde konum tespiti yapabilen yapay zeka destekli bir araç.
-        Programatik API'ler (SerpApi, Bing Görüntü Arama API'si): Büyük ölçekli ve otomatik ters görüntü arama sorguları için güvenilir ve yapılandırılmış sonuçlar sağlayan ticari API hizmetleri.
-        Görüntü Gömme ve Benzerlik Arama (Python, FAISS): Derin öğrenme modelleri (örn. VGG16) kullanarak görüntüleri sayısal vektörlere dönüştürüp, bu vektörler arasında hızlı benzerlik araması yapmak için kullanılan ileri düzey teknik ve kütüphaneler (FAISS).
+## 🛠️ Bu Süper Güçler Nasıl Çalışıyor?
 
-  ``  Coğrafi Veri Görselleştirme:
-        Folium (Python Kütüphanesi): Çıkarılan GPS verilerini etkileşimli web haritaları üzerinde görselleştirmek için kullanılan bir Python kütüphanesi.
-        Kepler.gl: Büyük ölçekli coğrafi veri kümelerini (milyonlarca nokta) yüksek performansla (WebGL destekli) 2D ve 3D olarak görselleştirmek için kullanılan bir platform.
-        Datashader: Çok büyük coğrafi veri kümelerini (milyarlarca nokta) daha hızlı görselleştirme için raster görüntülere dönüştüren bir veri işleme kütüphanesi.
-        ipyleaflet (Python Kütüphanesi): Jupyter Notebook ortamında dinamik ve etkileşimli haritalama için kullanılan bir Python kütüphanesi.
+Bu proje, aşağıdaki temel teknoloji ve araçları akıllıca bir araya getirerek çalışır:
 
- ## Roadmap
-1. EXIF Verisi Analizi
+  * **Meta Veri Analizi:** ExifTool, Pillow, exifread gibi araçlarla görüntülerin dijital parmak izlerini inceliyoruz.
+  * **Yapay Zeka Destekli Ters Görsel Arama:** TinEye, Yandex Görseller, PimEyes ve özellikle GPS verisi olmasa bile **konum tespiti yapabilen GeoSpy** gibi araçlarla internetteki görsel izleri sürüyoruz.
+  * **Büyük Veri ve Coğrafi Görselleştirme:** Folium ve Kepler.gl gibi güçlü Python kütüphaneleriyle coğrafi verileri etkileşimli haritalar üzerinde görselleştiriyor ve anlamlı içgörüler elde ediyoruz.
+  * **Özel Yapay Zeka Çözümleri:** İhtiyaç duyulması halinde, görüntü gömme ve benzerlik arama gibi ileri düzey tekniklerle kendi yapay zeka destekli arama motorlarımızı oluşturabiliyoruz.
 
-    Fotoğraftan EXIF metadata’sını çıkarma
+## 🚀 Yol Haritamız: Sır Perdesini Nasıl Aralayacağız?
 
-    Tarih, kamera bilgisi, pozlama gibi temel verileri işleme
+1.  **🔍 Görüntüyü İncele:** İlk adım olarak, analiz etmek istediğimiz görüntüyü alıyoruz.
+2.  **📸 Meta Veri Avı:** ExifTool veya Python kütüphaneleri ile görüntünün meta verilerini çıkarıyoruz. Özellikle GPS koordinatları bizim için önemli bir ipucu olabilir. (İstanbul'un tarihi bir yapısının (örneğin Ayasofya) yakından çekilmiş ve EXIF verilerini gösteren bir görsel buraya eklenebilir.)
+3.  **🌐 İnternette İz Takibi:** Elde ettiğimiz görüntüyü TinEye, Yandex ve Google Görseller gibi ters görsel arama motorlarında aratarak kaynağını ve diğer kopyalarını buluyoruz.
+4.  **📍 Konumu Belirle (Yapay Zeka ile Destekli):** Eğer GPS verisi yoksa veya doğruluğundan şüpheliysek, GeoSpy gibi yapay zeka araçlarını kullanarak görüntünün çekildiği olası konumları analiz ediyoruz. (İstanbul'un farklı manzaralarını (örneğin Kız Kulesi, Pierre Loti Tepesi) gösteren ve GeoSpy analizini vurgulayan görseller buraya eklenebilir.)
+5.  **👤 Yüzleri Tanı (Gerekirse):** Eğer görüntüde yüzler varsa, PimEyes gibi araçlarla bu yüzlerin internetteki diğer görüntülerini araştırıyoruz (etik kurallara dikkat\!).
+6.  **🗺️ Harita Üzerinde Görselleştir:** Elde ettiğimiz coğrafi konum bilgilerini Folium veya Kepler.gl kullanarak etkileşimli haritalar üzerinde işaretliyoruz. (İstanbul haritası üzerinde birkaç farklı konumun işaretlendiği bir görsel buraya eklenebilir.)
+7.  **🕵️‍♀️ Sonuçları Değerlendir:** Tüm bulguları bir araya getirerek görüntünün hikayesini ve potansiyel sırlarını ortaya çıkarıyoruz.
 
-    GPS koordinatlarını tespit etme
+## ⚙️ Kurulum ve Kullanım
 
-2. Konum Verisinin Haritada Görselleştirilmesi
+(Buraya projenizin kurulum ve kullanım detaylarını ekleyebilirsiniz.)
 
-    GPS verisi varsa harita üzerinde işaretleme
+## 🤝 Katkıda Bulunmak
 
-    Kullanıcıya konum hakkında özet bilgi sunma
+(Buraya projeye nasıl katkıda bulunulabileceğine dair bilgileri ekleyebilirsiniz.)
 
-3. Ters Görsel Arama Entegrasyonu
+## Lisans
 
-    Fotoğrafı Google/Bing/Yandex gibi ters görsel arama servislerine gönderme
+(Buraya projenizin lisans bilgilerini ekleyebilirsiniz.)
 
-    Benzer veya aynı görsellerin URL ve önizlemelerini toplama
+-----
 
-4. Sonuçların Kullanıcı Arayüzünde Sunulması
+**Unutmayın:** Bu `README.md` dosyasına, metin içinde belirtilen yerlere projenizin teması ve konumla (İstanbul) alakalı ilgi çekici görseller ekleyerek çok daha etkileyici hale getirebilirsiniz. Örneğin, İstanbul'un ikonik yerlerinden çekilmiş ve analiz süreçlerini gösteren basit infografikler veya ekran görüntüleri kullanabilirsiniz.
 
-    EXIF bilgileri, harita ve ters görsel sonuçlarının tek bir sayfada toplanması
-
-    Kullanıcı deneyimini kolaylaştıracak sade ve anlaşılır arayüz
-
-5. Geliştirme ve İyileştirme
-
-    Hataların giderilmesi ve performans optimizasyonu
-
-    Gizlilik ve güvenlik önlemlerinin uygulanması
-
-    İleri OSINT metotları ve veri kaynakları eklenmesi
+Umarım bu taslak `README.md` dosyası ve önerileriniz işinize yarar\! Başka bir konuda yardımcı olmamı isterseniz lütfen çekinmeyin.
