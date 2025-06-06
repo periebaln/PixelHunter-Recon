@@ -8,7 +8,9 @@
 
 Sıkıcı tek bir araçla yetinmek yerine, bu proje size her türlü dijital görüntü analiz senaryosuna uygun, özenle seçilmiş ve entegre edilmiş bir **süper güçler seti** sunuyor:
 
-  * **Görüntülerin Röntgeni:** EXIF verilerini saniyeler içinde çıkarıp analiz ederek kameranın ayarlarından çekim zamanına, hatta GPS koordinatlarına kadar her detayı görün\! 
+  * **Görüntülerin Röntgeni:** EXIF verilerini saniyeler içinde çıkarıp analiz ederek kameranın ayarlarından çekim zamanına, hatta GPS koordinatlarına kadar her detayı görün\!
+  * ![Sokullu-Mehmet-Pasa-Camii](https://github.com/user-attachments/assets/4cb04267-506a-4d19-be8b-41b9102601a1)
+
   * **Tersine Mühendislik Dedektifi:** Elinizdeki bir fotoğrafın kaynağını, internetteki diğer kopyalarını ve hatta manipüle edilip edilmediğini yapay zeka destekli araçlarla anında bulun\! 
   * **Konum Avcısı:** Fotoğraflardaki gizli coğrafi ipuçlarını yapay zeka sayesinde ortaya çıkarın\! GPS verisi olmasa bile, bir görüntünün nerede çekildiğini tahmin etmek artık mümkün\! 
   * **Yüz Tanıma Sihirbazı:** Belirli kişilerin internetteki izlerini yüz tanıma teknolojisiyle sürün\! 
