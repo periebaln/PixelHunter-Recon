@@ -10,10 +10,14 @@ Sıkıcı tek bir araçla yetinmek yerine, bu proje size her türlü dijital gö
 
   * **Görüntülerin Röntgeni:** EXIF verilerini saniyeler içinde çıkarıp analiz ederek kameranın ayarlarından çekim zamanına, hatta GPS koordinatlarına kadar her detayı görün\!
   * ![Sokullu-Mehmet-Pasa-Camii](https://github.com/user-attachments/assets/4cb04267-506a-4d19-be8b-41b9102601a1)
-                                               ## X-Pro2 @ 14.5mm, ISO 200, 1/3, f/5.6
+                                               FOTOĞRAFIN EXİF BİLİGİSİ: X-Pro2 @ 14.5mm, ISO 200, 1/3, f/5.6
   * **Tersine Mühendislik Dedektifi:** Elinizdeki bir fotoğrafın kaynağını, internetteki diğer kopyalarını ve hatta manipüle edilip edilmediğini yapay zeka destekli araçlarla anında bulun\! 
-  * **Konum Avcısı:** Fotoğraflardaki gizli coğrafi ipuçlarını yapay zeka sayesinde ortaya çıkarın\! GPS verisi olmasa bile, bir görüntünün nerede çekildiğini tahmin etmek artık mümkün\! 
-  * **Yüz Tanıma Sihirbazı:** Belirli kişilerin internetteki izlerini yüz tanıma teknolojisiyle sürün\! 
+  * **Konum Avcısı:** Fotoğraflardaki gizli coğrafi ipuçlarını yapay zeka sayesinde ortaya çıkarın\! GPS verisi olmasa bile, bir görüntünün nerede çekildiğini tahmin etmek artık mümkün\!
+    
+  * **Yüz Tanıma Sihirbazı:** Belirli kişilerin internetteki izlerini yüz tanıma teknolojisiyle sürün\!
+![yuz-tanima-sistemleri-nasil-calisir-1276846301](https://github.com/user-attachments/assets/1d1fa409-37f3-45cb-8808-d98043c39160)
+
+  
   * **Etik ve Güvenilir Analiz:** Dijital dedektiflik yaparken etik kurallara ve yasalara saygılı olmayı unutmuyoruz. Bu proje, sorumlu araç seçimini ve veri gizliliğini ön planda tutar.
 
 ## 🛠️ Bu Süper Güçler Nasıl Çalışıyor?
