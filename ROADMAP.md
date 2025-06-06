@@ -1,14 +1,9 @@
-Dijital görüntü analizi için en etkili ve güncel yöntemi detaylı bir yol haritası şeklinde açıklayacağım. Bu yöntem, tek bir araçtan ziyade, yapay zeka destekli en son teknolojileri ve etik yaklaşımları bir araya getiren entegre bir iş akışını temsil etmektedir.
-
-İşte yol haritamız:
-
 # Dijital Görüntü Analizi Yol Haritası: Yapay Zeka Destekli Entegre Yaklaşım
 
-## 1. Giriş: Neden Entegre Bir Yaklaşım?
 
-Günümüzün hızla gelişen dijital ortamında, açık kaynak istihbaratı (OSINT) kapsamında dijital görüntü analizi, kritik bir öneme sahiptir. Görüntülerden anlamlı istihbarat elde etmek, sadece meta veri çıkarmak veya ters görsel arama yapmakla sınırlı değildir; aynı zamanda görüntü manipülasyonlarını tespit etmeyi ve coğrafi konumları yapay zeka destekli yöntemlerle belirlemeyi de içerir. Tek bir aracın tüm bu karmaşık görevleri eşit derecede iyi yerine getiremeyeceği göz önüne alındığında, en etkili ve güncel yöntem, her bir analiz aşaması için en uygun araçları stratejik olarak birleştiren **hibrit ve yapay zeka destekli bir iş akışı** benimsemektir. Bu yol haritası, bu entegre yaklaşımı adım adım açıklamaktadır.
 
-## 2. Mevcut Durum: Şu Ana Kadar Ne Yaptık?
+
+## 1.Mevcut Durum: Şu Ana Kadar Ne Yaptık?
 
 Araştırmamız, dijital görüntü analizinin temel bileşenlerini ve bu alanlardaki mevcut araçları derinlemesine incelemiştir. Şu ana kadar yapılanlar şunlardır:
 
@@ -17,6 +12,12 @@ Araştırmamız, dijital görüntü analizinin temel bileşenlerini ve bu alanla
 *   **Güçlü ve Zayıf Yönlerin Değerlendirilmesi:** Her bir aracın ve yöntemin kendine özgü avantajları (örneğin, ExifTool'un kapsamlı meta veri desteği, TinEye'ın kopya tespiti, Kepler.gl'nin büyük veri görselleştirmesi) ve sınırlamaları (örneğin, ücretsiz web kazıma araçlarının kırılganlığı, bazı Python kütüphanelerinin güvenilirlik sorunları, ticari API'lerin maliyetleri) olduğunu tespit ettik.
 *   **Yapay Zekanın Rolünün Vurgulanması:** Yapay zeka tabanlı araçların (örneğin, yüz tanıma, GPS verisi olmayan konum tespiti, manipülasyon tespiti) OSINT'te giderek daha kritik hale geldiğini ve geleneksel yöntemlerin yetersiz kaldığı durumlarda önemli boşlukları doldurduğunu belirledik.
 *   **Etik ve Hukuki Çerçevelerin Önemi:** Görüntü analizi süreçlerinde gizlilik, doğruluk, rıza ve yasal uyumluluk gibi etik ve hukuki hususların temel bir zorunluluk olduğunu vurguladık.
+*   
+## 2. Neden Entegre Bir Yaklaşım?
+
+Günümüzün hızla gelişen dijital ortamında, açık kaynak istihbaratı (OSINT) kapsamında dijital görüntü analizi, kritik bir öneme sahiptir. Görüntülerden anlamlı istihbarat elde etmek, sadece meta veri çıkarmak veya ters görsel arama yapmakla sınırlı değildir; aynı zamanda görüntü manipülasyonlarını tespit etmeyi ve coğrafi konumları yapay zeka destekli yöntemlerle belirlemeyi de içerir. Tek bir aracın tüm bu karmaşık görevleri eşit derecede iyi yerine getiremeyeceği göz önüne alındığında, en etkili ve güncel yöntem, her bir analiz aşaması için en uygun araçları stratejik olarak birleştiren **hibrit ve yapay zeka destekli bir iş akışı** benimsemektir. Bu yol haritası, bu entegre yaklaşımı adım adım açıklamaktadır.
+
+## 
 
 ## 3. Yol Haritası: Nasıl Bir Yol İzleyeceğiz?
 
