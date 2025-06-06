@@ -13,7 +13,10 @@ Sıkıcı tek bir araçla yetinmek yerine, bu proje size her türlü dijital gö
                                                FOTOĞRAFIN EXİF BİLİGİSİ: X-Pro2 @ 14.5mm, ISO 200, 1/3, f/5.6
   * **Tersine Mühendislik Dedektifi:** Elinizdeki bir fotoğrafın kaynağını, internetteki diğer kopyalarını ve hatta manipüle edilip edilmediğini yapay zeka destekli araçlarla anında bulun\! 
   * **Konum Avcısı:** Fotoğraflardaki gizli coğrafi ipuçlarını yapay zeka sayesinde ortaya çıkarın\! GPS verisi olmasa bile, bir görüntünün nerede çekildiğini tahmin etmek artık mümkün\!
-    
+  ![chatgpt-nin-fotograftan-konum-tahmini-yapan-yetenegi-korkutuyor190451_0](https://github.com/user-attachments/assets/a5674b18-1112-492b-8a07-eefcf07c0e79)
+
+
+   
   * **Yüz Tanıma Sihirbazı:** Belirli kişilerin internetteki izlerini yüz tanıma teknolojisiyle sürün\!
 ![yuz-tanima-sistemleri-nasil-calisir-1276846301](https://github.com/user-attachments/assets/1d1fa409-37f3-45cb-8808-d98043c39160)
 
