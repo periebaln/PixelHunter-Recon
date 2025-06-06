@@ -18,7 +18,8 @@ Sıkıcı tek bir araçla yetinmek yerine, bu proje size her türlü dijital gö
 
    
   * **Yüz Tanıma Sihirbazı:** Belirli kişilerin internetteki izlerini yüz tanıma teknolojisiyle sürün\!
-![yuz-tanima-sistemleri-nasil-calisir-1276846301](https://github.com/user-attachments/assets/1d1fa409-37f3-45cb-8808-d98043c39160)
+![Yeni-Proje-2022-01-06T235327 489](https://github.com/user-attachments/assets/7fcc8057-aade-46c1-a944-d5083c3d4b7a)
+
 
   
   * **Etik ve Güvenilir Analiz:** Dijital dedektiflik yaparken etik kurallara ve yasalara saygılı olmayı unutmuyoruz. Bu proje, sorumlu araç seçimini ve veri gizliliğini ön planda tutar.
