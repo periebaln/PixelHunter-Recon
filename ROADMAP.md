@@ -466,8 +466,6 @@ Bu proje, görüntülerden meta veri, yüz, konum ve benzer içerikler çıkaran
 2. Görüntü dosyasını ve ters arama dizinini belirtin
 3. Sonuçları terminalde ve `konum_haritasi.html`’de görün
 
-## Yol Haritası
-Projenin geliştirme adımları için [ROADMAP.md](ROADMAP.md)’ye göz atın!
 
 ## Lisans
 MIT Lisansı
