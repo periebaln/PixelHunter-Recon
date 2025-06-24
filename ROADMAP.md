@@ -2,8 +2,29 @@
 
 Bu yol haritası, bir öğrenci olarak dijital görüntü analiziyle (OSINT) tanışman için tasarlanmış, eğlenceli ve uygulanabilir bir proje planıdır. Görüntülerden meta veri çıkarmaktan ters görüntü aramasına, yüz tanımadan coğrafi konumlandırmaya kadar bir dedektif gibi sırları açığa çıkaracaksın! 🚀 Karmaşık yapay zeka modellerine dalmadan, Python ve erişilebilir kütüphanelerle havalı bir araç seti oluşturacağız. Hazır mısın? Hadi başlayalım!
 
-![Proje Akış Diyagramı](https://via.placeholder.com/600x300.png?text=Proje+Akış+Diyagramı)  
-*Yakında: Görüntü analizinin adım adım akışını gösteren bir diyagram.*
+graph TD
+    A --> B{Planlama ve Yönlendirme};
+    B --> C;
+    C --> D[İşleme: Metadata Çıkarma ve Ön Hazırlık];
+    D --> E[Analiz ve Üretim];
+    subgraph E [Analiz ve Üretim]
+        E1;
+        E2[İçerik Analizi: Yüz, Nesne];
+        E3[Coğrafi Konumlandırma];
+        E4[Metadata Analizi];
+    end
+    E --> F{Yeni İpucu/Soru Var mı?};
+    F -- Evet --> B;
+    F -- Hayır --> G;
+    G --> H;
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style H fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#bfa,stroke:#333,stroke-width:2px
+    style D fill:#ff9,stroke:#333,stroke-width:2px
+    style E fill:#f96,stroke:#333,stroke-width:2px
+    style G fill:#ccc,stroke:#333,stroke-width:2px
 
 ## ✨ Projenin Amacı ve Neden Bu Kadar Havalı?
 
