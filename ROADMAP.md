@@ -1,98 +1,476 @@
-# Dijital Görüntü Analizi Yol Haritası: Yapay Zeka Destekli Entegre Yaklaşım
+# 🕵️‍♂️ Dijital Görüntü Dedektiflik Araç Seti: Süper Güçlerle Dolu Bir Öğrenci Macerası! 🖼️🌍
+
+Bu yol haritası, bir öğrenci olarak dijital görüntü analiziyle (OSINT) tanışman için tasarlanmış, eğlenceli ve uygulanabilir bir proje planıdır. Görüntülerden meta veri çıkarmaktan ters görüntü aramasına, yüz tanımadan coğrafi konumlandırmaya kadar bir dedektif gibi sırları açığa çıkaracaksın! 🚀 Karmaşık yapay zeka modellerine dalmadan, Python ve erişilebilir kütüphanelerle havalı bir araç seti oluşturacağız. Hazır mısın? Hadi başlayalım!
+
+![Proje Akış Diyagramı](https://via.placeholder.com/600x300.png?text=Proje+Akış+Diyagramı)  
+*Yakında: Görüntü analizinin adım adım akışını gösteren bir diyagram.*
+
+## ✨ Projenin Amacı ve Neden Bu Kadar Havalı?
+
+Bu proje, bir fotoğrafın hikayesini çözmek için dijital dedektiflik yapmanı sağlayacak. Çekim tarihi, cihaz bilgisi, GPS konumu gibi meta verileri çıkarabilir, internette benzer kopyalarını bulabilir, hatta yüzleri veya manzaraları analiz edebilirsin! Öğrenci olarak bu proje:
+
+- Python becerilerini roket hızında geliştirir 🚀
+- Açık Kaynak İstihbaratı (OSINT) dünyasına eğlenceli bir giriş sunar 🕵️‍♂️
+- Portföyüne ekleyebileceğin etkileyici bir proje olur 📊
+- Etik ve sorumlu veri kullanımıyla gerçek dünya sorunlarına dokunur 🌐
+
+**Örnek Senaryo:** Bir arkadaşın sana bir tatil fotoğrafı gönderiyor, ama nerede çekildiğini bilmiyorsun. Bu araç setiyle fotoğrafın meta verilerini, çekildiği olası konumu ve internetteki benzer görüntülerini saniyeler içinde bulabilirsin!
+
+## 🛠️ Süper Güçlerimiz: Kullanacağımız Teknolojiler
+
+- **Programlama Dili:** Python (kolay, güçlü, öğrenci dostu)
+- **Kütüphaneler:**
+  - [Pillow](https://python-pillow.org/): Görüntü meta verisi (EXIF) çıkarmak için
+  - [reverse-image-search](https://pypi.org/project/reverse-image-search/): Yerel dosyalarda ters görüntü araması
+  - [face_recognition](https://github.com/ageitgey/face_recognition): Yüz tespiti (etik şekilde, test verileriyle)
+  - [Folium](https://python-visualization.github.io/folium/): Konumları harita üzerinde görselleştirme
+  - [torchvision](https://pytorch.org/vision/stable/index.html): ResNet ile basit manzara analizi (opsiyonel)
+- **Dış API:** [Google Cloud Vision API](https://cloud.google.com/vision) (ücretsiz deneme sürümüyle nesne tanıma ve çevrimiçi arama)
+- **Araçlar:** VS Code, Jupyter Notebook, GitHub (kodunu paylaşmak için)
+
+## 🚀 Yol Haritası: Sırları Açığa Çıkarma Planı
+
+Bu plan, projeyi **2.5-4 haftada** tamamlaman için tasarlandı. Her adım, öğrenci temposuna uygun süreler ve net talimatlarla düzenlendi. Kod blokları ve görseller, bozulmadan kopyalanabilir şekilde formatlandı.
+
+### 1. Geliştirme Ortamını Kur
+
+**Açıklama:** Python ve kütüphaneleri kurarak projeye start veriyoruz.
+
+- **Görevler:**
+  - Python 3.8+’i kur: [Python resmi sitesi](https://www.python.org/)
+  - Gerekli kütüphaneleri yükle:
+    ```bash
+    pip install pillow reverse-image-search folium face_recognition torchvision
+    ```
+  - Google Cloud Vision API için ücretsiz deneme hesabı aç: [Kılavuz](https://cloud.google.com/vision/docs/setup)
+  - VS Code veya Jupyter Notebook kur
+- **Tahmini Süre:** 1-2 gün
+- **Öncelik:** Yüksek
+- **Bağımlılıklar:** Yok
+- **Riskler ve Çözümler:**
+  - **Risk:** Kütüphane kurulumunda hata
+    - **Çözüm:** Python sürümünü kontrol et (3.8+ önerilir), [Stack Overflow](https://stackoverflow.com/)’dan yardım al
+  - **Risk:** Google Cloud API kurulumu karmaşık gelebilir
+    - **Çözüm:** Resmi dokümantasyonu takip et, sadece “Image Analysis” API’sini aktif et
+- **Görsel Örnek:**  
+  ![VS Code Ortamı](https://via.placeholder.com/400x200.png?text=VS+Code+Kurulum+Ekran+Görüntüsü)  
+  *Yakında: VS Code’da çalışan Python ortamının ekran görüntüsü*
+
+### 2. Meta Veri Çıkarma Modülü
+
+**Açıklama:** Görüntülerin EXIF verilerini (tarih, cihaz, GPS) Pillow ile çıkaracağız.
+
+- **Görevler:**
+  - Pillow ile EXIF verilerini okuyan bir fonksiyon yaz
+  - Çıktıyı kullanıcı dostu şekilde göster (örneğin, tarih, GPS koordinatları)
+- **Örnek Kod:**
+  ```python
+  from PIL import Image
+  from PIL.ExifTags import TAGS
+
+  def extract_metadata(image_path):
+      try:
+          img = Image.open(image_path)
+          exif_data = img._getexif()
+          if exif_data:
+              metadata = {}
+              for tag, value in exif_data.items():
+                  tag_name = TAGS.get(tag, tag)
+                  metadata[tag_name] = value
+              print("Meta Veriler:")
+              for key, value in metadata.items():
+                  print(f"  {key}: {value}")
+              return metadata
+          else:
+              print("EXIF verisi bulunamadı.")
+              return {}
+      except Exception as e:
+          print(f"Hata: {e}")
+          return {}
+
+  # Kullanım
+  extract_metadata("tatil_fotografi.jpg")
+  ```
+- **Tahmini Süre:** 1-2 gün
+- **Öncelik:** Yüksek
+- **Bağımlılıklar:** Adım 1
+- **Riskler ve Çözümler:**
+  - **Risk:** EXIF verisi olmayan görüntüler
+    - **Çözüm:** Akıllı telefonla çekilmiş test fotoğrafları kullan ([Pixabay](https://pixabay.com/))
+- **Görsel Örnek:**  
+  ![Meta Veri Çıktısı](https://via.placeholder.com/400x200.png?text=Meta+Veri+Çıktısı)  
+  *Yakında: EXIF verilerinin terminalde göründüğü bir ekran görüntüsü*
+
+### 3. Ters Görüntü Araması Modülü
+
+**Açıklama:** Yerel dosyalarda benzer görüntüleri bulacağız ve Google Cloud Vision API ile çevrimiçi arama yapacağız.
+
+- **Görevler:**
+  - `reverse-image-search` ile yerel dizinde benzer görüntüleri ara
+  - Google Cloud Vision API ile nesne tanıma ve web’de benzer görüntü bul
+- **Örnek Kod (Yerel Arama):**
+  ```python
+  from reverse_image_search import ReverseImageSearch
+
+  def reverse_search_local(image_path, search_dir):
+      try:
+          ris = ReverseImageSearch()
+          results = ris.search(image_path, search_dir, threshold=0.9)
+          if results:
+              print("Benzer Görüntüler:")
+              for result in results:
+                  print(f"  Dosya: {result['filepath']}, Benzerlik: {result['similarity']}%")
+          else:
+              print("Benzer görüntü bulunamadı.")
+      except Exception as e:
+          print(f"Hata: {e}")
+
+  # Kullanım
+  reverse_search_local("sorgu_fotograf.jpg", "fotograf_klasoru/")
+  ```
+- **Örnek Kod (Google Vision API):**
+  ```python
+  from google.cloud import vision
+
+  def reverse_search_online(image_path):
+      client = vision.ImageAnnotatorClient()
+      with open(image_path, "rb") as image_file:
+          content = image_file.read()
+      image = vision.Image(content=content)
+      response = client.web_detection(image=image)
+      web_entities = response.web_detection.web_entities
+      if web_entities:
+          print("Web’de Bulunan Benzer İçerikler:")
+          for entity in web_entities:
+              if entity.description:
+                  print(f"  Açıklama: {entity.description}, Skor: {entity.score}")
+      else:
+          print("Web’de benzer içerik bulunamadı.")
+
+  # Kullanım
+  reverse_search_online("sorgu_fotograf.jpg")
+  ```
+- **Tahmini Süre:** 3-4 gün
+- **Öncelik:** Yüksek
+- **Bağımlılıklar:** Adım 1
+- **Riskler ve Çözümler:**
+  - **Risk:** Google Vision API ücretsiz kotası dolabilir
+    - **Çözüm:** Testleri küçük tut, ücretsiz deneme limitini takip et
+  - **Risk:** Yerel aramada performans düşüklüğü
+    - **Çözüm:** 10-20 görüntülük küçük bir dizinle test yap
+- **Görsel Örnek:**  
+  ![Google Vision Sonuçları](https://via.placeholder.com/400x200.png?text=Google+Vision+API+Sonuçları)  
+  *Yakında: Web’de bulunan benzer görüntülerin çıktısı*
+
+### 4. Yüz Tanıma Modülü
+
+**Açıklama:** Etik şekilde, test verileriyle yüz tespiti yapacağız.
+
+- **Görevler:**
+  - `face_recognition` ile bir görüntüde yüzleri tespit et
+  - Test amaçlı bir veri setiyle (örneğin, anonim test görüntüleri) yüz eşleştirme yap
+- **Örnek Kod:**
+  ```python
+  import face_recognition
+
+  def detect_faces(image_path):
+      try:
+          image = face_recognition.load_image_file(image_path)
+          face_locations = face_recognition.face_locations(image)
+          if face_locations:
+              print(f"{len(face_locations)} yüz tespit edildi.")
+              for i, loc in enumerate(face_locations):
+                  top, right, bottom, left = loc
+                  print(f"  Yüz {i+1}: Konum ({left},{top})-({right},{bottom})")
+          else:
+              print("Yüz bulunamadı.")
+      except Exception as e:
+          print(f"Hata: {e}")
+
+  # Kullanım
+  detect_faces("test_fotograf.jpg")
+  ```
+- **Not:** Yüz tanıma, sadece test verileriyle ([Labeled Faces in the Wild](http://vis-www.cs.umass.edu/lfw/)) kullanılmalı. Gerçek kişilerle kullanmak etik sorunlar doğurabilir.
+- **Tahmini Süre:** 2-3 gün
+- **Öncelik:** Orta
+- **Bağımlılıklar:** Adım 1
+- **Riskler ve Çözümler:**
+  - **Risk:** Etik veya gizlilik sorunları
+    - **Çözüm:** Sadece açık lisanslı test verileri kullan, gerçek kişilerden izin al
+  - **Risk:** Kütüphane yavaş çalışabilir
+    - **Çözüm:** Küçük görüntülerle test yap
+- **Görsel Örnek:**  
+  ![Yüz Tespiti](https://via.placeholder.com/400x200.png?text=Yüz+Tespiti+Sonuçları)  
+  *Yakında: Tespit edilen yüzlerin işaretlendiği bir görüntü*
+
+### 5. Coğrafi Konumlandırma ve Görselleştirme Modülü
+
+**Açıklama:** EXIF’teki GPS verilerini haritada göstereceğiz ve opsiyonel olarak manzara analiziyle konum tahmini yapacağız.
+
+- **Görevler:**
+  - GPS koordinatlarını EXIF’ten çıkar ve Folium ile haritada göster
+  - Opsiyonel: ResNet ile manzara analizi yaparak konum tahmini öner (örneğin, “bu bir plaj”)
+- **Örnek Kod (GPS ve Harita):**
+  ```python
+  from PIL import Image
+  from PIL.ExifTags import TAGS, GPSTAGS
+  import folium
+
+  def get_gps_coordinates(image_path):
+      try:
+          img = Image.open(image_path)
+          exif_data = img._getexif()
+          if exif_data and "GPSInfo" in exif_data:
+              gps_info = {}
+              for tag, value in exif_data.items():
+                  tag_name = TAGS.get(tag, tag)
+                  if tag_name == "GPSInfo":
+                      for gps_tag, gps_value in value.items():
+                          gps_tag_name = GPSTAGS.get(gps_tag, gps_tag)
+                          gps_info[gps_tag_name] = gps_value
+              if "GPSLatitude" in gps_info and "GPSLongitude" in gps_info:
+                  lat = gps_info["GPSLatitude"]
+                  lon = gps_info["GPSLongitude"]
+                  lat_ref = gps_info.get("GPSLatitudeRef", "N")
+                  lon_ref = gps_info.get("GPSLongitudeRef", "E")
+                  latitude = (lat[0] + lat[1]/60.0 + lat[2]/3600.0) * (1 if lat_ref == "N" else -1)
+                  longitude = (lon[0] + lon[1]/60.0 + lon[2]/3600.0) * (1 if lon_ref == "E" else -1)
+                  return latitude, longitude
+          return None, None
+      except Exception as e:
+          print(f"Hata: {e}")
+          return None, None
+
+  def plot_location(latitude, longitude):
+      if latitude and longitude:
+          map = folium.Map(location=[latitude, longitude], zoom_start=15)
+          folium.Marker([latitude, longitude], popup="Çekim Konumu").add_to(map)
+          map.save("konum_haritasi.html")
+          print("Harita 'konum_haritasi.html' dosyasına kaydedildi.")
+      else:
+          print("GPS verisi bulunamadı.")
+
+  # Kullanım
+  lat, lon = get_gps_coordinates("tatil_fotografi.jpg")
+  plot_location(lat, lon)
+  ```
+- **Örnek Kod (Manzara Analizi - Opsiyonel):**
+  ```python
+  from torchvision import models, transforms
+  from PIL import Image
+  import torch
+
+  def analyze_scene(image_path):
+      model = models.resnet50(pretrained=True)
+      model.eval()
+      transform = transforms.Compose([
+          transforms.Resize(256),
+          transforms.CenterCrop(224),
+          transforms.ToTensor(),
+          transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+      ])
+      img = Image.open(image_path)
+      img_t = transform(img)
+      batch_t = torch.unsqueeze(img_t, 0)
+      with torch.no_grad():
+          out = model(batch_t)
+      # ImageNet sınıflarıyla eşleştir (örneğin, "plaj", "dağ")
+      print("Manzara tahmini: [Örnek - Plaj, Dağ vb.]")
+      # Not: Gerçek sınıflandırma için ImageNet etiketleri gerekir
+
+  # Kullanım
+  analyze_scene("tatil_fotografi.jpg")
+  ```
+- **Tahmini Süre:** 3-4 gün (manzara analizi hariç 2 gün)
+- **Öncelik:** Yüksek
+- **Bağımlılıklar:** Adım 2
+- **Riskler ve Çözümler:**
+  - **Risk:** GPS verisi eksik
+    - **Çözüm:** Manzara analiziyle destekle veya kullanıcıya net mesaj göster
+  - **Risk:** ResNet yavaş veya karmaşık
+    - **Çözüm:** Opsiyonel tut, küçük görüntülerle test yap
+- **Görsel Örnek:**  
+  ![Folium Haritası](https://via.placeholder.com/400x200.png?text=Folium+Harita+Örneği)  
+  *Yakında: GPS koordinatlarının işaretlendiği bir harita ekran görüntüsü*
+
+### 6. Modülleri Entegre Etme
+
+**Açıklama:** Tüm modülleri birleştirip kullanıcı dostu bir arayüz yapacağız.
+
+- **Görevler:**
+  - Komut satırı arayüzü yaz (tüm modülleri çağıran bir script)
+  - Opsiyonel: [Streamlit](https://streamlit.io/) ile basit bir web arayüzü oluştur
+- **Örnek Kod (Komut Satırı):**
+  ```python
+  def analyze_image(image_path, search_dir):
+      print("🕵️‍♂️ Görüntü Analizi Başlıyor...")
+      print("\n1. Meta Veri Analizi:")
+      metadata = extract_metadata(image_path)
+      print("\n2. Ters Görüntü Araması (Yerel):")
+      reverse_search_local(image_path, search_dir)
+      print("\n3. Ters Görüntü Araması (Çevrimiçi):")
+      reverse_search_online(image_path)
+      print("\n4. Yüz Tespiti:")
+      detect_faces(image_path)
+      print("\n5. Coğrafi Konumlandırma:")
+      lat, lon = get_gps_coordinates(image_path)
+      plot_location(lat, lon)
+      print("\n6. Manzara Analizi (Opsiyonel):")
+      analyze_scene(image_path)
+
+  # Kullanım
+  image_path = input("Görüntü dosyasının yolunu gir: ")
+  search_dir = input("Ters arama için dizin yolunu gir: ")
+  analyze_image(image_path, search_dir)
+  ```
+- **Örnek Kod (Streamlit - Opsiyonel):**
+  ```python
+  import streamlit as st
+
+  st.title("🕵️‍♂️ Dijital Görüntü Dedektifi")
+  uploaded_file = st.file_uploader("Bir görüntü yükle", type=["jpg", "png"])
+  if uploaded_file:
+      with open("temp.jpg", "wb") as f:
+          f.write(uploaded_file.getbuffer())
+      st.write("Analiz Sonuçları:")
+      st.write("Meta Veriler:", extract_metadata("temp.jpg"))
+      # Diğer modülleri benzer şekilde çağır
+  ```
+- **Tahmini Süre:** 4-5 gün (Streamlit hariç 3 gün)
+- **Öncelik:** Yüksek
+- **Bağımlılıklar:** Adımlar 2-5
+- **Riskler ve Çözümler:**
+  - **Risk:** Modüller arasında uyumsuzluk
+    - **Çözüm:** Her modülü ayrı test et, hata ayıklama için print kullan
+  - **Risk:** Streamlit öğrenmesi zaman alabilir
+    - **Çözüm:** Önce komut satırını tamamla, Streamlit’i bonus yap
+
+### 7. Test ve Dokümantasyon
+
+**Açıklama:** Araç setini test edip kullanım kılavuzu yazacağız.
+
+- **Görevler:**
+  - Farklı görüntülerle test yap (EXIF’li/EXIF’siz, GPS’li/GPS’siz)
+  - README dosyası yaz (kurulum, kullanım, sınırlamalar)
+- **Örnek README:**
+  ```markdown
+  # Dijital Görüntü Dedektiflik Araç Seti
+
+  Bu proje, görüntülerden meta veri, yüz, konum ve benzer içerikler çıkaran bir Python araç setidir.
+
+  ## Kurulum
+  1. Python 3.8+ kurun: [python.org](https://www.python.org/)
+  2. Kütüphaneleri yükleyin:
+     ```bash
+     pip install pillow reverse-image-search folium face_recognition torchvision
+     ```
+  3. Google Cloud Vision API’yi kurun: [Kılavuz](https://cloud.google.com/vision/docs/setup)
+
+  ## Kullanım
+  1. `main.py`’yi çalıştırın
+  2. Görüntü dosyasını ve ters arama dizinini belirtin
+  3. Sonuçları terminalde ve `konum_haritasi.html`’de görün
+
+  ## Sınırlamalar
+  - Çevrimiçi arama Google Vision API kotasına bağlı
+  - Yüz tanıma sadece test verileriyle kullanılmalı
+
+  ## Yol Haritası
+  Daha fazla detay için [ROADMAP.md](ROADMAP.md)’yi okuyun
+
+  ## Lisans
+  MIT Lisansı
+  ```
+- **Tahmini Süre:** 2-3 gün
+- **Öncelik:** Orta
+- **Bağımlılıklar:** Adım 6
+- **Riskler ve Çözümler:**
+  - **Risk:** Testlerde hata çıkması
+    - **Çözüm:** Hataları logla, küçük veri setleriyle test yap
+
+### 8. Sunum ve Paylaşım
+
+**Açıklama:** Projeni bir raporla veya GitHub’da paylaşarak dünyaya sun!
+
+- **Görevler:**
+  - Projenin ne yaptığını, nasıl çalıştığını anlatan bir rapor yaz
+  - Kodu [GitHub](https://github.com/)’a yükle, README’yi cilala
+- **Tahmini Süre:** 1-2 gün
+- **Öncelik:** Düşük
+- **Bağımlılıklar:** Adım 7
+
+## ⏰ Toplam Süre ve Planlama
+
+| Adım | Tahmini Süre | Öncelik |
+|------|--------------|---------|
+| Ortam Kurma | 1-2 gün | Yüksek |
+| Meta Veri Çıkarma | 1-2 gün | Yüksek |
+| Ters Görüntü Araması | 3-4 gün | Yüksek |
+| Yüz Tanıma | 2-3 gün | Orta |
+| Coğrafi Konumlandırma | 3-4 gün | Yüksek |
+| Entegrasyon | 4-5 gün | Yüksek |
+| Test ve Dokümantasyon | 2-3 gün | Orta |
+| Sunum | 1-2 gün | Düşük |
+
+**Toplam Süre:** 18-25 gün (2.5-4 hafta)
+
+## ⚠️ Potansiyel Riskler ve Çözümler
+
+| Risk | Çözüm |
+|------|-------|
+| Kütüphane kurulum hataları | Python sürümünü kontrol et, [Stack Overflow](https://stackoverflow.com/)’dan destek al |
+| Google Vision API kota sorunu | Ücretsiz kotayı takip et, testleri sınırla |
+| Etik/gizlilik sorunları | Yüz tanıma için sadece test verileri kullan, izin al |
+| Performans düşüklüğü | Küçük veri setleriyle çalış (10-20 görüntü) |
+| Streamlit öğrenme süresi | Önce komut satırını tamamla, Streamlit’i bonus yap |
+
+## 📚 Gerekli Kaynaklar
+
+- **İnsan Kaynakları:** Sadece sen! (Öğrenci olarak kendi başınasın)
+- **Teknoloji:** Bilgisayar, Python, internet, Google Cloud hesabı (ücretsiz deneme)
+- **Veri:** [Pixabay](https://pixabay.com/), [Labeled Faces in the Wild](http://vis-www.cs.umass.edu/lfw/) veya kendi test fotoğrafların
+
+## 🎯 Sonuç ve Bonus Fikirler
+
+Bu yol haritası, dijital dedektiflik dünyasına adım atman için eksiksiz bir plan sunuyor! Projen bittiğinde, bir görüntüyü yükleyip meta verilerini, benzer görüntüleri, yüzleri ve çekim konumunu analiz edebileceksin. Portföyüne eklemek için harika bir iş olacak! 😎
+
+**Bonus Fikirler:**
+- **GeoSpy Benzeri AI:** ResNet’i geliştirip [Places365](http://places2.csail.mit.edu/) ile eğiterek daha iyi konum tahmini yap
+- **Mobil Uygulama:** Streamlit arayüzünü mobil dostu bir versiyona çevir
+- **Deepfake Tespiti:** Basit bir deepfake dedektörü için [DeepFace](https://github.com/serengil/deepface) araştır
+
+Başarılar dilerim, dedektif! Soruların olursa, yaz bana! 🕵️‍♂️
 
 
 
+---
 
-## 1.Mevcut Durum: Şu Ana Kadar Ne Yaptık?
+### README ile Bağlantı Önerisi
 
-Araştırmamız, dijital görüntü analizinin temel bileşenlerini ve bu alanlardaki mevcut araçları derinlemesine incelemiştir. Şu ana kadar yapılanlar şunlardır:
+`README.md` dosyana yol haritasını bağlamak için şu bölümü ekleyebilirsin:
 
-*   **Temel Kategorilerin Belirlenmesi:** Dijital görüntü analizini üç ana kategoriye ayırdık: EXIF veri çıkarma ve analizi, ters görüntü arama ve coğrafi veri görselleştirme.
-*   **Araç ve Çözüm Envanteri:** Her kategori için piyasada bulunan önde gelen araçları ve Python kütüphanelerini belirledik. Bu araçların platformlarını, temel kullanımlarını, özelliklerini, gereksinimlerini ve maliyet/lisans durumlarını analiz ettik.
-*   **Güçlü ve Zayıf Yönlerin Değerlendirilmesi:** Her bir aracın ve yöntemin kendine özgü avantajları (örneğin, ExifTool'un kapsamlı meta veri desteği, TinEye'ın kopya tespiti, Kepler.gl'nin büyük veri görselleştirmesi) ve sınırlamaları (örneğin, ücretsiz web kazıma araçlarının kırılganlığı, bazı Python kütüphanelerinin güvenilirlik sorunları, ticari API'lerin maliyetleri) olduğunu tespit ettik.
-*   **Yapay Zekanın Rolünün Vurgulanması:** Yapay zeka tabanlı araçların (örneğin, yüz tanıma, GPS verisi olmayan konum tespiti, manipülasyon tespiti) OSINT'te giderek daha kritik hale geldiğini ve geleneksel yöntemlerin yetersiz kaldığı durumlarda önemli boşlukları doldurduğunu belirledik.
-*   **Etik ve Hukuki Çerçevelerin Önemi:** Görüntü analizi süreçlerinde gizlilik, doğruluk, rıza ve yasal uyumluluk gibi etik ve hukuki hususların temel bir zorunluluk olduğunu vurguladık.
-*   
-## 2. Neden Entegre Bir Yaklaşım?
+```markdown
+# Dijital Görüntü Dedektiflik Araç Seti
 
-Günümüzün hızla gelişen dijital ortamında, açık kaynak istihbaratı (OSINT) kapsamında dijital görüntü analizi, kritik bir öneme sahiptir. Görüntülerden anlamlı istihbarat elde etmek, sadece meta veri çıkarmak veya ters görsel arama yapmakla sınırlı değildir; aynı zamanda görüntü manipülasyonlarını tespit etmeyi ve coğrafi konumları yapay zeka destekli yöntemlerle belirlemeyi de içerir. Tek bir aracın tüm bu karmaşık görevleri eşit derecede iyi yerine getiremeyeceği göz önüne alındığında, en etkili ve güncel yöntem, her bir analiz aşaması için en uygun araçları stratejik olarak birleştiren **hibrit ve yapay zeka destekli bir iş akışı** benimsemektir. Bu yol haritası, bu entegre yaklaşımı adım adım açıklamaktadır.
+## Proje Hakkında
+Bu proje, görüntülerden meta veri, yüz, konum ve benzer içerikler çıkaran bir Python araç setidir. Dijital dedektiflik dünyasına giriş yapmak isteyen öğrenciler için tasarlandı! 🕵️‍♂️
 
-## 
+## Kurulum
+1. Python 3.8+ kurun: [python.org](https://www.python.org/)
+2. Kütüphaneleri yükleyin:
+   ```bash
+   pip install pillow reverse-image-search folium face_recognition torchvision
+   ```
+3. Google Cloud Vision API’yi kurun: [Kılavuz](https://cloud.google.com/vision/docs/setup)
 
-## 3. Yol Haritası: Nasıl Bir Yol İzleyeceğiz?
+## Kullanım
+1. `main.py`’yi çalıştırın
+2. Görüntü dosyasını ve ters arama dizinini belirtin
+3. Sonuçları terminalde ve `konum_haritasi.html`’de görün
 
-Dijital görüntü analizinde en güncel ve çözüm odaklı yaklaşım, yapay zeka destekli araçları ve sağlam metodolojileri bir araya getiren çok aşamalı bir iş akışı oluşturmaktır. İşte bu iş akışının detaylı yol haritası:
+## Yol Haritası
+Projenin geliştirme adımları için [ROADMAP.md](ROADMAP.md)’ye göz atın!
 
-### Aşama 1: Görüntü Ön İşleme ve Kapsamlı Meta Veri Çıkarma
-
-Bu aşama, analizin temelini oluşturur ve görüntülerden mümkün olan en fazla bilgiyi güvenilir bir şekilde çıkarmayı hedefler.
-
-*   **Hedef:** Görüntülerin meta verilerini (EXIF, IPTC, XMP) eksiksiz bir şekilde çıkarmak, özellikle GPS koordinatlarını belirlemek ve potansiyel manipülasyon izlerini tespit etmek.
-*   **Araçlar ve Yöntemler:**
-    *   **ExifTool (Masaüstü CLI):** Adli düzeyde kapsamlı meta veri çıkarma ve düzenleme için sektör standardı bir araçtır. Windows, Mac ve Linux'ta komut satırı arayüzü olarak çalışır ve GPS koordinatları dahil detaylı etiketleri gösterir. Toplu işlemler için idealdir.
-    *   **Python Kütüphaneleri (Pillow ve exifread):** Otomatikleştirilmiş iş akışları ve programatik kontrol için Python kütüphaneleri kullanılacaktır.
-        *   **Pillow:** Genel görüntü işleme ve EXIF verilerine erişim için temel bir kütüphanedir. Ham EXIF verilerini okuyabilir ve GPS bilgilerini içeren `GPSInfo` etiketine erişim sağlar.
-        *   **exifread:** Özellikle GPS verilerini çıkarmak için daha doğrudan bir yaklaşım sunar ve ham oran nesnelerini ondalık derecelere dönüştürmek için yardımcı işlevler içerir. Pillow'a kıyasla daha kolay GPS yorumlaması sağlar.
-        *   **GPSPhoto'dan Kaçınma:** `GPSPhoto` kütüphanesi kullanım kolaylığı sunsa da, sık hata döndürmesi ve konum bilgilerinin gerçek çekim konumlarıyla eşleşmeme sorunları nedeniyle kritik OSINT görevleri için güvenilirliği düşüktür.
-    *   **Çevrimiçi EXIF Görüntüleyiciler (ExifEditor.io, FotoForensics):** Hızlı ilk kontroller ve temel meta veri görüntüleme için kullanılabilir. Özellikle **ExifEditor.io**, görüntüleri sunucuya yüklemeden istemci tarafında işlem yapmasıyla gizlilik açısından avantaj sunar. **FotoForensics** ise görüntü manipülasyonlarını tespit etme yeteneğiyle öne çıkar.
-*   **Gereksinimler:** Python 3.x, ilgili kütüphanelerin kurulumu (`pip install exifread Pillow`), ExifTool'un sistemde kurulu olması. İnternet bağlantısı (çevrimiçi araçlar için).
-*   **Çıktı:** Kapsamlı EXIF meta veri raporu (JSON/CSV formatında), çıkarılan GPS koordinatları (ondalık derece formatında).
-
-### Aşama 2: Yapay Zeka Destekli Ters Görüntü Arama ve Manipülasyon Tespiti
-
-Bu aşama, bir görüntünün kökenini, kopyalarını, benzer içeriklerini ve potansiyel manipülasyonlarını yapay zeka destekli algoritmalarla tespit etmeyi içerir.
-
-*   **Hedef:** Görüntülerin çevrimiçi varlığını izlemek, manipüle edilmiş veya yapay zeka tarafından üretilmiş içerikleri belirlemek ve özellikle yüz veya konum tabanlı istihbarat elde etmek.
-*   **Araçlar ve Yöntemler:**
-    *   **Çoklu Arama Motoru Yaklaşımı:** Tek bir arama motoruna güvenmek yerine, her birinin farklı güçlü yönlerinden yararlanmak için birden fazla motor kullanılacaktır.
-        *   **TinEye:** Görüntü kopyalarını izleme, düzenlemeleri ve kırpmaları tespit etme konusunda uzmandır. Gizliliğe önem verir ve arama görüntülerini kaydetmez.
-        *   **Yandex Görseller:** Üstün yüz tanıma ve görüntü düzenlemelerini tespit etme yeteneğiyle bilinir. Yapay zeka destekli arama sunar.
-        *   **Google Görseller:** Geniş indeksi ve genel amaçlı ters görüntü arama yetenekleri nedeniyle hala önemlidir.
-    *   **Uzmanlaşmış Yapay Zeka Araçları:**
-        *   **PimEyes:** Bir kişinin yüzünün internette nerede göründüğünü bulmak için gelişmiş bir yüz tanıma arama motorudur. Gizlilik yönetimi ve fikri mülkiyet koruması için kritik özellikler sunar (ücretli planlar).
-        *   **GeoSpy:** GPS verisi olmasa bile görüntü desenlerini ve çevresel ipuçlarını analiz ederek fotoğrafların konumunu belirleyen yapay zeka destekli bir araçtır. Meta verileri kaldırılmış görüntüler için konum istihbaratı sağlamada devrim niteliğindedir.
-        *   **Lenso.ai / Search4faces:** Benzer görüntü arama, yüz tanıma ve kopya tespiti gibi yapay zeka destekli özellikler sunar.[1, 2, 3, 4, 5, 6]
-    *   **Programatik Erişim ve Otomasyon (API'ler):**
-        *   **Ticari Ters Görüntü Arama API'leri (SerpApi, Bing Image Search API):** Kendi kendine oluşturulan web kazıyıcılara kıyasla daha istikrarlı ve güvenilir programatik arayüzler sunar. Büyük ölçekli, otomatik soruşturmalar için idealdir.
-        *   **Görüntü Gömme ve Benzerlik Arama (Python):** En gelişmiş ve özelleştirilebilir yöntemdir. Önceden eğitilmiş sinir ağları (örn. VGG16) kullanarak görüntülerden görsel özellikler (gömme) çıkarılır ve **FAISS (Facebook AI Similarity Search)** gibi kütüphanelerle büyük veri kümelerinde verimli benzerlik araması yapılır. Bu, özel arama motorları oluşturmak ve hassas verileri dahili olarak işlemek için kullanılır.
-*   **Gereksinimler:** İnternet bağlantısı, API anahtarları (ticari hizmetler için), Python 3.x, ilgili kütüphanelerin kurulumu (`pip install requests beautifulsoup4 faiss-cpu numpy keras opencv`).
-*   **Çıktı:** Benzer görüntüler, kaynak URL'ler, manipülasyon tespit raporları, yüz eşleşmeleri, yapay zeka tarafından belirlenen konum tahminleri.
-
-### Aşama 3: Coğrafi Veri Görselleştirme ve Büyük Veri Analizi
-
-Bu aşama, çıkarılan GPS verilerini ve yapay zeka tarafından belirlenen konumları etkileşimli haritalar üzerinde görselleştirmeyi ve büyük coğrafi veri kümelerini analiz etmeyi amaçlar.
-
-*   **Hedef:** Konum istihbaratını anlaşılır ve etkileşimli bir şekilde sunmak, mekansal desenleri ve ilişkileri ortaya çıkarmak.
-*   **Araçlar ve Yöntemler:**
-    *   **Folium:** Orta büyüklükteki veri kümeleriyle etkileşimli web haritaları oluşturmak için mükemmel bir Python kütüphanesidir. HTML dosyaları olarak kaydedilebilir ve tarayıcıda görüntülenebilir. İşaretleyiciler, açılır pencereler ve koroplet haritalar gibi özellikler sunar.
-    *   **ipyleaflet:** Jupyter Notebook ortamında gerçek zamanlı, dinamik ve etkileşimli haritalama için idealdir. Python'dan veya tarayıcı etkileşimiyle dinamik güncellemelere izin verir].
-    *   **Kepler.gl:** Büyük ölçekli coğrafi veri kümeleri için güçlü analiz ve görselleştirme sunan açık kaynaklı, tarayıcı tabanlı bir platformdur. WebGL kullanarak milyonlarca noktayı verimli bir şekilde işler ve 3D görselleştirmeleri destekler. Mapbox API anahtarı gerektirir.
-    *   **Datashader:** Milyarlarca nokta/pikseli raster görüntülere toplayarak çok büyük veri kümelerini görselleştirmek için kullanılır. Veri boyutunu önemli ölçüde azaltarak daha hızlı görüntüleme sağlar.
-    *   **GeoPandas:** Mekansal veri yapılarını (GeoSeries, GeoDataFrame) işlemek ve mekansal işlemleri (birleştirme, gruplama) etkinleştirmek için Pandas'ı genişletir. Coğrafi verileri görselleştirme için hazırlamak için gereklidir.
-    *   **Plotly:** Etkileşimli, web tabanlı görselleştirmeler için genel amaçlı bir Python kütüphanesidir. 2D ve 3D haritalar oluşturabilir, ancak çok büyük coğrafi veri kümeleri için Kepler.gl kadar optimize olmayabilir.
-*   **Gereksinimler:** Python 3.x, ilgili kütüphanelerin kurulumu (`pip install folium ipyleaflet keplergl-cli geopandas datashader plotly`), Jupyter Notebook ortamı (ipyleaflet için), Mapbox API anahtarı (Kepler.gl ve bazı Plotly özellikleri için).
-*   **Çıktı:** Etkileşimli haritalar (HTML formatında), mekansal analiz raporları, yoğunluk haritaları, 3D görselleştirmeler.
-
-### Aşama 4: Etik ve Hukuki Uyum
-
-Tüm bu süreç boyunca, etik ve hukuki hususlara mutlak surette uyulması gerekmektedir. Bu, sadece bir aşama değil, tüm iş akışına entegre edilmesi gereken bir prensiptir.
-
-*   **Hedef:** Toplanan ve analiz edilen verilerin gizliliğini, doğruluğunu ve yasalara uygunluğunu sağlamak, soruşturmacıların ve etkilenen bireylerin güvenliğini korumak.
-*   **Uygulamalar:**
-    *   **Güvenlik, Doğruluk ve Onur:** Tüm etkilenen bireylerin (soruşturmacılar dahil) fiziksel, dijital ve psikososyal refahına odaklanılmalı, bulgular birden fazla kaynaktan çapraz kontrol edilmeli ve mağdurların/tanıkların kimlikleri korunmalıdır. "Mozaik etkisi"ne dikkat edilmelidir.
-    *   **Hukuki Çerçeveler:** GDPR (AB/Birleşik Krallık) ve CCPA (ABD) gibi bölgesel veri gizliliği yasaları anlaşılmalı ve bunlara uyulmalıdır. Kişisel olarak tanımlanabilir bilgiler (PII) işlenirken hukuki danışmanlık alınmalıdır.
-    *   **Rıza ve Minimuma İndirme:** Açık izin olmadan özel bilgi toplanmasından kaçınılmalı ve yalnızca gerekli veriler toplanmalıdır.[7]
-    *   **Şeffaflık ve Güvenilirlik:** Kullanılan araçların veri kaynakları ve işleyişi şeffaf olmalı, bulguların mahkemede geçerli olabilmesi için güvenilir ve tekrarlanabilir olması sağlanmalıdır. Geliştiricilerin geçmişleri ve itibarları araştırılmalıdır.
-    *   **Kazıma Etiği:** Platformların hizmet şartlarında açıkça yasakladığı kazıma işlemlerinden kaçınılmalıdır.[7]
-*   **Gereksinimler:** Hukuki danışmanlık, etik eğitim, veri işleme politikaları, araç seçiminde titizlik.
-
-## 4. Gelecek Adımlar ve Sürekli Gelişim
-
-Dijital görüntü analizi alanı sürekli evrim geçirmektedir. Bu yol haritasının başarısı, sürekli öğrenmeye ve yeni gelişmelere uyum sağlamaya bağlıdır.
-
-*   **Yapay Zeka Okuryazarlığı:** Yapay zekanın görüntü analizindeki hızlı evrimi (deepfake tespiti, yapay zeka destekli ters arama, konum çıkarımı) göz önüne alındığında, OSINT uygulayıcıları yapay zeka okuryazarlığı konusunda sürekli olarak kendilerini geliştirmeli ve iş akışlarını bu gelişmiş yetenekleri entegre edecek şekilde uyarlamalıdır.
-*   **Yeni Tehditlere Uyum:** Yapay zeka tarafından üretilen içerik ve gelişmiş manipülasyon teknikleri gibi yeni tehditlere karşı koymak için araç ve yöntemler sürekli güncellenmelidir.
-*   **Özelleştirilmiş Çözümler Geliştirme:** Genel amaçlı araçların yetersiz kaldığı veya gizlilik/güvenlik endişelerinin yüksek olduğu durumlarda, görüntü gömme ve benzerlik arama gibi tekniklerle kendi özel çözümlerimizi geliştirmek için yatırım yapılmalıdır.
-*   **Veri Doğrulama ve Çapraz Kontrol:** Doğruluk ve güvenilirliği sağlamak için bilgiler her zaman birden fazla kaynaktan çapraz kontrol edilmeli ve doğrulanmalıdır.[8, 7, 9]
-
-Bu yol haritası, dijital görüntü analizinde en etkili ve güncel sonuçları elde etmek için kapsamlı bir çerçeve sunmaktadır. Her aşamada doğru araçların seçilmesi ve etik prensiplere bağlı kalınması, başarılı OSINT operasyonlarının anahtarı olacaktır.
+## Lisans
+MIT Lisansı
+```
