@@ -3,6 +3,11 @@
 Bu yol haritası, bir öğrenci olarak dijital görüntü analiziyle (OSINT) tanışman için tasarlanmış, eğlenceli ve uygulanabilir bir proje planıdır. Görüntülerden meta veri çıkarmaktan ters görüntü aramasına, yüz tanımadan coğrafi konumlandırmaya kadar bir dedektif gibi sırları açığa çıkaracaksın! 🚀 Karmaşık yapay zeka modellerine dalmadan, Python ve erişilebilir kütüphanelerle havalı bir araç seti oluşturacağız. Hazır mısın? Hadi başlayalım!
 
 
+
+https://github.com/user-attachments/assets/cc8a04be-04c0-46cb-b3f2-f01e35637364 
+
+
+
 ## ✨ Projenin Amacı ve Neden Bu Kadar Havalı?
 
 Bu proje, bir fotoğrafın hikayesini çözmek için dijital dedektiflik yapmanı sağlayacak. Çekim tarihi, cihaz bilgisi, GPS konumu gibi meta verileri çıkarabilir, internette benzer kopyalarını bulabilir, hatta yüzleri veya manzaraları analiz edebilirsin! Öğrenci olarak bu proje:
