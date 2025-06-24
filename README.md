@@ -2,7 +2,9 @@
 
 PixelHunter-Recon, bir fotoğrafın sırlarını çözmek için tasarlanmış büyüleyici bir OSINT aracıdır! Meta veri analiziyle gizli detayları ortaya çıkarın, ters görüntü aramasıyla hikayeleri keşfedin ve konum haritalama ile dünyayı avucunuzun içine getirin.
 
-<video src="https://github.com/periebaln/PixelHunter-Recon/raw/main/assets/pixelhunter-recon-intro.mp4" controls width="100%"></video>  
+
+https://github.com/user-attachments/assets/593731ed-6ac5-46a6-b3a5-b55992a54a1c 
+
 
 ---
 
